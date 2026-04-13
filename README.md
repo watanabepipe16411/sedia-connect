@@ -11,8 +11,16 @@ font-family: "Helvetica Neue", Arial, sans-serif;
 color:#333;
 }
 
+/* ===== メインカラー ===== */
+:root{
+--cyan100:#00AEEF;
+--cyan70:#6FD3F7;
+--cyan30:#E6F7FD;
+}
+
+/* ===== HERO ===== */
 .hero{
-background:linear-gradient(135deg,#000,#555);
+background:linear-gradient(135deg,var(--cyan70),var(--cyan100));
 color:#fff;
 padding:100px 20px 140px;
 text-align:center;
@@ -31,28 +39,16 @@ clip-path:polygon(0 0,100% 100%,0 100%);
 }
 
 .hero h1{
-font-size:42px;
+font-size:36px;
 margin-bottom:15px;
 }
 
 .hero p{
 font-size:18px;
-opacity:.9;
+opacity:.95;
 }
 
-.cta{
-margin-top:30px;
-}
-
-.cta a{
-background:#ffcc00;
-color:#000;
-padding:16px 40px;
-border-radius:6px;
-font-weight:bold;
-text-decoration:none;
-}
-
+/* ===== section ===== */
 .section{
 padding:80px 20px;
 max-width:1100px;
@@ -64,8 +60,8 @@ background:#f7f7f7;
 }
 
 .section-dark{
-background:#000;
-color:#fff;
+background:var(--cyan30);
+color:#333;
 text-align:center;
 }
 
@@ -75,6 +71,7 @@ font-size:28px;
 margin-bottom:50px;
 }
 
+/* ===== grid ===== */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -89,7 +86,7 @@ box-shadow:0 8px 20px rgba(0,0,0,.08);
 text-align:center;
 }
 
-/* 番号付き特徴 */
+/* ===== feature ===== */
 .feature{
 display:flex;
 gap:20px;
@@ -98,8 +95,8 @@ align-items:flex-start;
 }
 
 .feature-number{
-background:#ffcc00;
-color:#000;
+background:var(--cyan100);
+color:#fff;
 font-weight:bold;
 font-size:24px;
 width:60px;
@@ -116,8 +113,8 @@ margin:0 0 10px;
 }
 
 .big-cta{
-background:#ffcc00;
-color:#000;
+background:var(--cyan100);
+color:#fff;
 padding:20px 60px;
 font-size:20px;
 font-weight:bold;
@@ -127,9 +124,10 @@ text-decoration:none;
 margin-top:20px;
 }
 
+/* ===== footer ===== */
 footer{
-background:#111;
-color:#aaa;
+background:var(--cyan30);
+color:#555;
 padding:40px 20px;
 font-size:14px;
 }
@@ -139,12 +137,8 @@ font-size:14px;
 <body>
 
 <section class="hero">
-<h1>セディアコネクト</h1>
+<h1>セディア・コネクト お問合せフォーム</h1>
 <p>施工店ネットワークで仕事の機会を創出</p>
-
-<div class="cta">
-<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/">無料で問い合わせ</a>
-</div>
 </section>
 
 <section class="section">
@@ -155,6 +149,12 @@ font-size:14px;
 <div class="card">案件が回らない</div>
 <div class="card">新規取引先を増やしたい</div>
 <div class="card">遠方現場に対応したい</div>
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" class="big-cta">
+無料で問合せ
+</a>
 </div>
 
 </section>
@@ -217,7 +217,7 @@ font-size:14px;
 TEL　03-4564-4294（平日9:00～17:30）<br>
 
 会社HP　
-<a href="https://www.sedia-system.co.jp/" target="_blank" style="color:#ccc;">
+<a href="https://www.sedia-system.co.jp/" target="_blank" style="color:#00AEEF;">
 https://www.sedia-system.co.jp/
 </a>
 </div>
