@@ -18,7 +18,6 @@ color:#fff;
 padding:100px 20px 140px;
 text-align:center;
 position:relative;
-overflow:hidden;
 }
 
 .hero:after{
@@ -91,33 +90,30 @@ box-shadow:0 8px 20px rgba(0,0,0,.08);
 text-align:center;
 }
 
-.section-gray .card{
-background:#fff;
-}
-
-.step{
+/* 番号付き特徴 */
+.feature{
 display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
 gap:20px;
+margin-bottom:30px;
+align-items:flex-start;
 }
 
-.step-box{
-flex:1;
-min-width:250px;
-background:#fff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-text-align:center;
-position:relative;
-}
-
-.step-number{
-font-size:40px;
+.feature-number{
+background:#ffcc00;
+color:#000;
 font-weight:bold;
-color:#ffcc00;
-margin-bottom:10px;
+font-size:24px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+}
+
+.feature-text h3{
+margin:0 0 10px;
 }
 
 .big-cta{
@@ -161,36 +157,41 @@ padding:20px;
 <div class="card">新規取引先を増やしたい</div>
 <div class="card">遠方現場に対応したい</div>
 </div>
+
 </section>
 
 <section class="section section-gray">
-<h2 class="title">セディアコネクトの特長</h2>
+<h2 class="title">セディアコネクトの特徴</h2>
 
-<div class="grid">
-<div class="card">全国施工店ネットワーク</div>
-<div class="card">元請案件紹介</div>
-<div class="card">安心補償付き</div>
-<div class="card">入会金・年会費無料</div>
+<div class="feature">
+<div class="feature-number">01</div>
+<div class="feature-text">
+<h3>施工店マッチング</h3>
+セディアグループのネットワークから最適な施工店をご紹介します。
 </div>
-</section>
-
-<section class="section">
-<h2 class="title">ご利用の流れ</h2>
-
-<div class="step">
-<div class="step-box">
-<div class="step-number">01</div>
-お問い合わせ
 </div>
 
-<div class="step-box">
-<div class="step-number">02</div>
-サービス説明
+<div class="feature">
+<div class="feature-number">02</div>
+<div class="feature-text">
+<h3>元請案件のご紹介</h3>
+新しい元請会社との取引機会を創出します。
+</div>
 </div>
 
-<div class="step-box">
-<div class="step-number">03</div>
-マッチング開始
+<div class="feature">
+<div class="feature-number">03</div>
+<div class="feature-text">
+<h3>安心の補償制度</h3>
+万が一の事故時にも安心してご利用いただけます。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">04</div>
+<div class="feature-text">
+<h3>入会金・年会費無料</h3>
+費用負担なく導入可能です。
 </div>
 </div>
 
@@ -198,7 +199,7 @@ padding:20px;
 
 <section class="section-dark section">
 <h2>まずはお気軽にお問い合わせください</h2>
-<p>無料でご案内いたします</p>
+<p>サービス詳細をご案内いたします</p>
 
 <a href="https://example.com/contact" class="big-cta">
 今すぐ問い合わせる
