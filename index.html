@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>セディアコネクト</title>
+<title>セディア・コネクト</title>
 
 <style>
 body{
@@ -25,6 +25,24 @@ color:#fff;
 padding:100px 20px 140px;
 text-align:center;
 position:relative;
+overflow:hidden;
+}
+
+/* 右上ロゴ */
+.logo-box{
+position:absolute;
+top:20px;
+right:20px;
+background:#fff;
+padding:10px 16px;
+border-radius:8px;
+box-shadow:0 4px 12px rgba(0,0,0,.15);
+z-index:10;
+}
+
+.logo-box img{
+height:40px;
+display:block;
 }
 
 .hero:after{
@@ -59,10 +77,12 @@ margin:auto;
 background:#f7f7f7;
 }
 
+/* CTA背景 */
 .section-dark{
 background:var(--cyan30);
 color:#333;
 text-align:center;
+border-bottom:40px solid #fff; /* 区切り追加 */
 }
 
 .title{
@@ -78,12 +98,22 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
 
+/* ★強調カード */
 .card{
 background:#fff;
 padding:30px;
 border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
+box-shadow:0 10px 24px rgba(0,0,0,.08);
 text-align:center;
+border:2px solid var(--cyan30);
+font-weight:600;
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 16px 30px rgba(0,0,0,.12);
+border-color:var(--cyan100);
 }
 
 /* ===== feature ===== */
@@ -122,14 +152,16 @@ border-radius:8px;
 display:inline-block;
 text-decoration:none;
 margin-top:20px;
+box-shadow:0 8px 20px rgba(0,174,239,.3);
 }
 
 /* ===== footer ===== */
 footer{
-background:var(--cyan30);
+background:#fff;
 color:#555;
-padding:40px 20px;
+padding:50px 20px;
 font-size:14px;
+border-top:1px solid #eee;
 }
 </style>
 </head>
@@ -137,8 +169,14 @@ font-size:14px;
 <body>
 
 <section class="hero">
+
+<div class="logo-box">
+<img src="logo.90f2d645.png" alt="ロゴ">
+</div>
+
 <h1>セディア・コネクト お問合せフォーム</h1>
-<p>元請さまと施工店さまをつなげるネットワーク</p>
+<p>施工店ネットワークで仕事の機会を創出</p>
+
 </section>
 
 <section class="section">
