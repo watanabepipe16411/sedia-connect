@@ -143,7 +143,7 @@ padding:20px;
 <p>施工店ネットワークで仕事の機会を創出</p>
 
 <div class="cta">
-<a href="https://example.com/contact">無料で問い合わせ</a>
+<a href="[https://example.com/contact](https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/)">無料で問い合わせ</a>
 </div>
 </section>
 
@@ -201,7 +201,7 @@ padding:20px;
 <h2>まずはお気軽にお問い合わせください</h2>
 <p>サービス詳細をご案内いたします</p>
 
-<a href="https://example.com/contact" class="big-cta">
+<a href="[https://example.com/contact](https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/)" class="big-cta">
 今すぐ問い合わせる
 </a>
 
