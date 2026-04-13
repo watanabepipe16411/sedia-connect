@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -183,7 +182,8 @@ padding:20px;
 <div class="feature-number">03</div>
 <div class="feature-text">
 <h3>安心の補償制度</h3>
-万が一の事故時にも安心してご利用いただけます。
+セディア・コネクト内でマッチングした工事に限り、対物事故1000万円まで補償れさます。<br>
+  ※補償には事前の申請が必要となります。
 </div>
 </div>
 
