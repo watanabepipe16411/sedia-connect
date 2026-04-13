@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -130,8 +131,8 @@ margin-top:20px;
 footer{
 background:#111;
 color:#aaa;
-text-align:center;
-padding:20px;
+padding:40px 20px;
+font-size:14px;
 }
 </style>
 </head>
@@ -182,8 +183,8 @@ padding:20px;
 <div class="feature-number">03</div>
 <div class="feature-text">
 <h3>安心の補償制度</h3>
-セディア・コネクト内でマッチングした工事に限り、対物事故1000万円まで補償れさます。<br>
-  ※補償には事前の申請が必要となります。
+セディア・コネクト内でマッチングした工事に限り、対物事故1000万円まで補償されます。<br>
+※補償には事前の申請が必要となります。
 </div>
 </div>
 
@@ -208,7 +209,23 @@ padding:20px;
 </section>
 
 <footer>
+<div style="max-width:900px;margin:auto;line-height:1.8;">
+<strong>渡辺パイプ株式会社</strong><br>
+〒100-0004<br>
+東京都千代田区大手町1-3-2<br>
+経団連会館12階<br><br>
+
+TEL　03-4564-4294（平日9:00～17:30）<br>
+
+会社HP　
+<a href="https://www.sedia-system.co.jp/" target="_blank" style="color:#ccc;">
+https://www.sedia-system.co.jp/
+</a>
+</div>
+
+<div style="margin-top:20px;text-align:center;font-size:12px;">
 © SEDIA CONNECT
+</div>
 </footer>
 
 </body>
