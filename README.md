@@ -138,7 +138,7 @@ font-size:14px;
 
 <section class="hero">
 <h1>セディア・コネクト お問合せフォーム</h1>
-<p>施工店ネットワークで仕事の機会を創出</p>
+<p>元請さまと施工店さまをつなげるネットワーク</p>
 </section>
 
 <section class="section">
