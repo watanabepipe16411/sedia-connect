@@ -82,7 +82,7 @@ background:#f7f7f7;
 background:var(--cyan30);
 color:#333;
 text-align:center;
-border-bottom:40px solid #fff; /* 区切り追加 */
+border-bottom:40px solid #fff;
 }
 
 .title{
@@ -168,11 +168,10 @@ border-top:1px solid #eee;
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RTJS5DKSL9"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RTJS5DKSL9');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RTJS5DKSL9');
 </script>
   
 </head>
@@ -201,7 +200,9 @@ border-top:1px solid #eee;
 </div>
 
 <div style="text-align:center;margin-top:40px;">
-<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" class="big-cta">
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" 
+class="big-cta"
+onclick="gtag('event','contact_click',{'location':'middle'});">
 無料で問合せ
 </a>
 </div>
@@ -256,7 +257,9 @@ border-top:1px solid #eee;
 <h2>まずはお気軽にお問い合わせください</h2>
 <p>サービス詳細をご案内いたします</p>
 
-<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" class="big-cta">
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" 
+class="big-cta"
+onclick="gtag('event','contact_click',{'location':'bottom'});">
 今すぐ問い合わせる
 </a>
 
