@@ -1,681 +1,353 @@
-<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DXサービス - お客様ポータル</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セディア・コネクト</title>
 
-        body {
-            font-family: 'Inter', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-            min-height: 100vh;
-        }
+<style>
+body{
+margin:0;
+font-family: "Helvetica Neue", Arial, sans-serif;
+color:#333;
+}
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+/* ===== メインカラー ===== */
+:root{
+--cyan100:#00AEEF;
+--cyan70:#6FD3F7;
+--cyan30:#E6F7FD;
+}
 
-        /* ヘッダー */
-        header {
-            background: rgba(15, 15, 30, 0.8);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 8px 32px rgba(0, 150, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 150, 255, 0.2);
-        }
+/* ===== HERO ===== */
+.hero{
+background:linear-gradient(135deg,var(--cyan70),var(--cyan100));
+color:#fff;
+padding:100px 20px 140px;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* 右上ロゴ */
+.logo-box{
+position:absolute;
+top:20px;
+right:20px;
+background:#fff;
+padding:10px 16px;
+border-radius:8px;
+box-shadow:0 4px 12px rgba(0,0,0,.15);
+z-index:10;
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
+.logo-box img{
+height:40px;
+display:block;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
+/* 中央ロゴ */
+.hero-center-logo{
+background:#fff;
+display:inline-block;
+padding:15px 25px;
+border-radius:10px;
+box-shadow:0 6px 18px rgba(0,0,0,.15);
+margin:20px 0;
+}
 
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            font-weight: 500;
-            position: relative;
-        }
+.hero-center-logo img{
+height:60px;
+display:block;
+margin:auto;
+}
 
-        nav a:hover {
-            color: #00d4ff;
-        }
+.hero:after{
+content:"";
+position:absolute;
+bottom:-1px;
+left:0;
+width:100%;
+height:80px;
+background:#fff;
+clip-path:polygon(0 0,100% 100%,0 100%);
+}
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
-            transition: width 0.3s ease;
-        }
+.hero h1{
+font-size:36px;
+margin-bottom:15px;
+}
 
-        nav a:hover::after {
-            width: 100%;
-        }
+.hero p{
+font-size:18px;
+opacity:.95;
+}
 
-        /* ヒーローセクション */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 150, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            border-radius: 20px;
-            color: white;
-            padding: 8rem 0;
-            text-align: center;
-            margin: 3rem 0;
-            position: relative;
-            overflow: hidden;
-        }
+/* ===== 0円強調バッジ ===== */
+.zero-fee{
+display:inline-block;
+background:#ff9800;
+color:#fff;
+font-size:20px;
+font-weight:bold;
+padding:14px 28px;
+border-radius:999px;
+margin-top:20px;
+box-shadow:0 8px 20px rgba(255,0,0,.25);
+letter-spacing:.05em;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-        }
+.zero-fee small{
+display:block;
+font-size:14px;
+font-weight:normal;
+opacity:.9;
+margin-top:4px;
+}
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 150, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite reverse;
-        }
+/* ===== section ===== */
+.section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
 
-        .hero .container {
-            position: relative;
-            z-index: 1;
-        }
+.section-gray{
+background:#f7f7f7;
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.section-dark{
+background:var(--cyan30);
+color:#333;
+text-align:center;
+border-bottom:40px solid #fff;
+}
 
-        .hero p {
-            font-size: 1.3rem;
-            opacity: 0.85;
-            margin-bottom: 2.5rem;
-            color: #b0b0b0;
-            font-weight: 300;
-        }
+.title{
+text-align:center;
+font-size:28px;
+margin-bottom:50px;
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-        }
+/* ===== grid ===== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
 
-        /* サービスセクション - 画像ボタン */
-        .services {
-            padding: 6rem 0;
-            background-color: transparent;
-        }
+/* ★強調カード */
+.card{
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 24px rgba(0,0,0,.08);
+text-align:center;
+border:2px solid var(--cyan30);
+font-weight:600;
+transition:.25s;
+}
 
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-            color: white;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 16px 30px rgba(0,0,0,.12);
+border-color:var(--cyan100);
+}
 
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
+/* 矢印 */
+.arrow-down{
+text-align:center;
+font-size:60px;
+color:var(--cyan100);
+margin:20px 0;
+animation:arrowMove 1.2s infinite;
+}
 
-        .service-button {
-            position: relative;
-            cursor: pointer;
-            border: none;
-            padding: 0;
-            background: transparent;
-            transition: all 0.3s ease;
-            border-radius: 16px;
-            overflow: hidden;
-            height: 300px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-        }
+@keyframes arrowMove{
+0%{transform:translateY(0);}
+50%{transform:translateY(8px);}
+100%{transform:translateY(0);}
+}
 
-        .service-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
-            opacity: 0;
-            z-index: 1;
-            transition: opacity 0.3s ease;
-        }
+/* ===== feature ===== */
+.feature{
+display:flex;
+gap:20px;
+margin-bottom:30px;
+align-items:flex-start;
+}
 
-        .service-button:hover::before {
-            opacity: 0.15;
-        }
+.feature-number{
+background:var(--cyan100);
+color:#fff;
+font-weight:bold;
+font-size:24px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+}
 
-        .service-button:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.3);
-        }
+.feature-text h3{
+margin:0 0 10px;
+}
 
-        .service-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
+.big-cta{
+background:var(--cyan100);
+color:#fff;
+padding:20px 60px;
+font-size:20px;
+font-weight:bold;
+border-radius:8px;
+display:inline-block;
+text-decoration:none;
+margin-top:20px;
+box-shadow:0 8px 20px rgba(0,174,239,.3);
+}
 
-        .service-content {
-            position: relative;
-            z-index: 2;
-            padding: 2.5rem;
-            width: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(15, 15, 30, 0.95) 100%);
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
+/* ===== footer ===== */
+footer{
+background:#fff;
+color:#555;
+padding:50px 20px;
+font-size:14px;
+border-top:1px solid #eee;
+}
+</style>
 
-        .service-button:hover .service-content {
-            transform: translateY(-10px);
-        }
-
-        .service-content h3 {
-            color: #00d4ff;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .service-content p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* About セクション */
-        .about {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(0, 150, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            border-radius: 20px;
-            text-align: center;
-            margin: 3rem 0;
-        }
-
-        .about h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .about p {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Contact セクション */
-        .contact {
-            padding: 5rem 0;
-            margin: 3rem 0;
-        }
-
-        .contact h2 {
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            background: linear-gradient(135deg, rgba(0, 150, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 1rem;
-            border: 1px solid rgba(0, 150, 255, 0.3);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: #808080;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-            box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
-        }
-
-        /* ボタン */
-        .btn {
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%);
-            color: white;
-            display: inline-block;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
-            z-index: -1;
-            transition: left 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 150, 255, 0.4);
-            letter-spacing: 0.5px;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(15, 15, 30, 0.8);
-            color: #808080;
-            text-align: center;
-            padding: 2.5rem 0;
-            border-top: 1px solid rgba(0, 150, 255, 0.2);
-            margin-top: 4rem;
-        }
-
-        /* モーダル */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
-            border: 1px solid rgba(0, 150, 255, 0.3);
-            margin: 5% auto;
-            padding: 2.5rem;
-            border-radius: 16px;
-            width: 85%;
-            max-width: 550px;
-            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.3);
-            animation: slideIn 0.3s ease;
-        }
-
-        .close {
-            color: #808080;
-            float: right;
-            font-size: 2rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            line-height: 1;
-        }
-
-        .close:hover {
-            color: #00d4ff;
-        }
-
-        #modalTitle {
-            color: #00d4ff;
-            margin-bottom: 1.5rem;
-            margin-top: 1rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        #modalContent {
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            color: #b0b0b0;
-        }
-
-        #modalContent strong {
-            color: #00d4ff;
-        }
-
-        #modalContent ul {
-            margin: 1rem 0 1rem 1.5rem;
-        }
-
-        #modalContent li {
-            margin: 0.5rem 0;
-            color: #b0b0b0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* レスポンシブデザイン */
-        @media (max-width: 1024px) {
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                flex-direction: column;
-                font-size: 0.9rem;
-            }
-
-            header .container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-        }
-    </style>
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RTJS5DKSL9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RTJS5DKSL9');
+</script>
+  
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">DX Services</div>
-            <nav>
-                <ul>
-                    <li><a href="#services">サービス</a></li>
-                    <li><a href="#about">について</a></li>
-                    <li><a href="#contact">お問い合わせ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Digital Transformation Services</h1>
-                <p>ビジネスの成長を支援する統合デジタルソリューション</p>
-            </div>
-        </section>
+<section class="hero">
 
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Our Services</h2>
-                <div class="service-grid">
-                    <button class="service-button" onclick="openService('cloud')">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%); z-index: 0;"></div>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 150, 255, 0.2) 0%, rgba(15, 15, 30, 0.8) 100%); z-index: 1;"></div>
-                        <div class="service-content">
-                            <h3>☁️ クラウド管理</h3>
-                            <p>エンタープライズグレードのクラウドソリューション</p>
-                        </div>
-                    </button>
+<div class="logo-box">
+<img src="S_CONNECT_LOGO最終.png" alt="ロゴ">
+</div>
 
-                    <button class="service-button" onclick="openService('analytics')">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0070e0 0%, #00a8ff 100%); z-index: 0;"></div>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 120, 255, 0.2) 0%, rgba(15, 15, 30, 0.8) 100%); z-index: 1;"></div>
-                        <div class="service-content">
-                            <h3>📊 データ分析</h3>
-                            <p>AI駆動のインテリジェント分析プラットフォーム</p>
-                        </div>
-                    </button>
+<h1>セディア・コネクト お問合せフォーム</h1>
 
-                    <button class="service-button" onclick="openService('security')">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0050cc 0%, #0080ff 100%); z-index: 0;"></div>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 80, 255, 0.2) 0%, rgba(15, 15, 30, 0.8) 100%); z-index: 1;"></div>
-                        <div class="service-content">
-                            <h3>🔒 セキュリティ</h3>
-                            <p>次世代型の統合セキュリティソリューション</p>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </section>
+<div class="hero-center-logo">
+<img src="S_CONNECT_LOGO最終.png" alt="ロゴ">
+</div>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About Us</h2>
-                <p>デジタルトランスフォーメーションの推進により、お客様のビジネス成長を実現します。20年以上の実績と信頼で、1000社以上の企業様のDX推進をサポートしてきました。最新のテクノロジーと専門的知見で、貴社の未来をサポートします。</p>
-            </div>
-        </section>
+<p>渡辺パイプ・セディアグループの施工店ネットワークで仕事の機会を創出</p>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <form class="contact-form">
-                    <input type="text" placeholder="会社名" required>
-                    <input type="email" placeholder="メールアドレス" required>
-                    <textarea placeholder="メッセージ" rows="5" required></textarea>
-                    <button type="submit" class="btn">送信</button>
-                </form>
-            </div>
-        </section>
-    </main>
+<div class="zero-fee">
+入会金・年会費・紹介手数料　すべて0円
+<small>完全無料でご利用いただけます</small>
+</div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 DX Services. All rights reserved.</p>
-        </div>
-    </footer>
+</section>
 
-    <div id="serviceModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeService()">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalContent"></p>
-            <button class="btn" onclick="closeService()">閉じる</button>
-        </div>
-    </div>
+<section class="section">
+<h2 class="title">こんなお悩みありませんか？</h2>
 
-    <script>
-        const serviceDetails = {
-            cloud: {
-                title: 'クラウド管理システム',
-                content: `
-                    <strong>概要：</strong>企業のデータをセキュアなクラウド環境で一元管理します。<br><br>
-                    <strong>主な機能：</strong>
-                    <ul>
-                        <li>リアルタイムのデータ同期と自動バックアップ</li>
-                        <li>複数拠点からのアクセス制御</li>
-                        <li>スケーラブルなストレージ容量</li>
-                        <li>99.9%の稼働保証</li>
-                    </ul>
-                    <strong>対象企業：</strong>中堅企業～大企業<br><br>
-                    <strong>導入効果：</strong>運用コスト削減、業務効率化、セキュリティ向上
-                `
-            },
-            analytics: {
-                title: 'データ分析・レポート',
-                content: `
-                    <strong>概要：</strong>ビジネスデータを可視化し、AI駆動の分析で経営判断をサポートします。<br><br>
-                    <strong>主な機能：</strong>
-                    <ul>
-                        <li>カスタマイズ可能なダッシュボード</li>
-                        <li>AI予測分析による将来予測</li>
-                        <li>自動レポート生成・配信</li>
-                        <li>データマイニング機能</li>
-                    </ul>
-                    <strong>対象企業：</strong>全業種・規模<br><br>
-                    <strong>導入効果：</strong>データ駆動経営、意思決定の高速化、競争力強化
-                `
-            },
-            security: {
-                title: 'セキュリティ管理',
-                content: `
-                    <strong>概要：</strong>企業の重要な情報資産を守る包括的なセキュリティソリューションです。<br><br>
-                    <strong>主な機能：</strong>
-                    <ul>
-                        <li>高度な脅威検知・対応システム</li>
-                        <li>コンプライアンス自動チェック</li>
-                        <li>定期的なセキュリティ監査</li>
-                        <li>従業員教育プログラム</li>
-                    </ul>
-                    <strong>対象企業：</strong>全業種・規模<br><br>
-                    <strong>導入効果：</strong>情報漏洩防止、法的リスク軽減、信頼性向上
-                `
-            }
-        };
+<div class="grid">
+<div class="card">施工店が見つからない</div>
+<div class="card">案件が回らない</div>
+<div class="card">新規取引先を増やしたい</div>
+<div class="card">遠方現場に対応したい</div>
+</div>
 
-        function openService(serviceKey) {
-            const modal = document.getElementById('serviceModal');
-            const details = serviceDetails[serviceKey];
-            
-            if (details) {
-                document.getElementById('modalTitle').textContent = details.title;
-                document.getElementById('modalContent').innerHTML = details.content;
-                modal.style.display = 'block';
-            }
-        }
+<div class="arrow-down">↓</div>
 
-        function closeService() {
-            const modal = document.getElementById('serviceModal');
-            modal.style.display = 'none';
-        }
+<div style="text-align:center;margin-top:10px;">
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" 
+class="big-cta"
+onclick="gtag('event','contact_click',{'location':'middle'});">
+無料で問合せ
+</a>
+</div>
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('serviceModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
+</section>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('お問い合わせありがとうございます。担当者より連絡させていただきます。');
-                    contactForm.reset();
-                });
-            }
-        });
-    </script>
+<section class="section section-gray">
+<h2 class="title">セディアコネクトの特徴</h2>
+
+<div class="feature">
+<div class="feature-number">01</div>
+<div class="feature-text">
+<h3>ご紹介には渡辺パイプの営業担当が仲介いたします</h3>
+通常のマッチングサイトとは異なり、責任をもって渡辺パイプの営業担当が仲介し、マッチングまでつなげます。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">02</div>
+<div class="feature-text">
+<h3>紹介率80％以上</h3>
+渡辺パイプの営業担当が責任をもって仲介しますので、紹介率は80％以上となっております。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">03</div>
+<div class="feature-text">
+<h3>万が一に備えた工事補償1000万円つき</h3>
+セディア・コネクト内でマッチングした工事に限り、対物事故1000万円まで補償されます。<br>
+※補償には事前の申請が必要となります。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">04</div>
+<div class="feature-text">
+<h3>全国の現場で利用できる</h3>
+全国のセディアグループのネットワークから最適な施工店をご紹介します。
+
+<div style="margin-top:12px;font-size:13px;color:#666;line-height:1.6;">
+※ご利用にあたっては所定の審査がございます。<br>
+お取引状況等により、ご利用条件が異なる場合や、ご案内が難しい場合がございます。
+</div>
+
+</div>
+</div>
+
+</section>
+
+<section class="section-dark section">
+<h2>まずはお気軽にお問い合わせください</h2>
+<p>サービス詳細をご案内いたします</p>
+
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" 
+class="big-cta"
+onclick="gtag('event','contact_click',{'location':'bottom'});">
+今すぐ問い合わせる
+</a>
+
+</section>
+
+<footer>
+<div style="max-width:900px;margin:auto;line-height:1.8;">
+<strong>渡辺パイプ株式会社</strong><br>
+〒100-0004<br>
+東京都千代田区大手町1-3-2<br>
+経団連会館12階<br><br>
+
+TEL　03-4564-4294（平日9:00～17:30）<br>
+
+会社HP　
+<a href="https://www.sedia-system.co.jp/" target="_blank" style="color:#00AEEF;">
+https://www.sedia-system.co.jp/
+</a>
+</div>
+
+<div style="margin-top:20px;text-align:center;font-size:12px;">
+© SEDIA CONNECT
+</div>
+</footer>
+
 </body>
 </html>
