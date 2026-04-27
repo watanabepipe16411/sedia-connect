@@ -61,17 +61,6 @@ display:block;
 margin:auto;
 }
 
-.hero:after{
-content:"";
-position:absolute;
-bottom:-1px;
-left:0;
-width:100%;
-height:80px;
-background:#fff;
-clip-path:polygon(0 0,100% 100%,0 100%);
-}
-
 .hero h1{
 font-size:36px;
 margin-bottom:15px;
@@ -82,33 +71,34 @@ font-size:18px;
 opacity:.95;
 }
 
-/* ===== 0円強調バッジ ===== */
+/* ===== 0円強調 ===== */
 .zero-fee{
 display:inline-block;
 background:#ff9800;
 color:#fff;
-font-size:18px;
 font-weight:bold;
 padding:14px 28px;
 border-radius:999px;
 margin-top:20px;
 box-shadow:0 8px 20px rgba(255,0,0,.25);
 letter-spacing:.05em;
+font-size:18px;
+}
+
+/* PC表示 */
+.pc-text{
+display:inline;
+}
+
+/* スマホ表示は非表示 */
+.sp-text{
+display:none;
 }
 
 /* 0円強調 */
-.zero-fee .big-zero{
-font-size:32px;
-display:block;
-margin-top:5px;
-}
-
-.zero-fee small{
-display:block;
-font-size:14px;
-font-weight:normal;
-opacity:.9;
-margin-top:4px;
+.big-zero{
+font-size:28px;
+margin-left:6px;
 }
 
 /* ===== section ===== */
@@ -118,123 +108,20 @@ max-width:1100px;
 margin:auto;
 }
 
-.section-gray{
-background:#f7f7f7;
-}
-
-.section-dark{
-background:var(--cyan30);
-color:#333;
-text-align:center;
-border-bottom:40px solid #fff;
-}
-
 .title{
 text-align:center;
 font-size:28px;
 margin-bottom:50px;
 }
 
-/* ===== grid ===== */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-/* カード */
-.card{
-background:#fff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 24px rgba(0,0,0,.08);
-text-align:center;
-border:2px solid var(--cyan30);
-font-weight:600;
-transition:.25s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 16px 30px rgba(0,0,0,.12);
-border-color:var(--cyan100);
-}
-
-/* 矢印 */
-.arrow-down{
-text-align:center;
-font-size:60px;
-color:var(--cyan100);
-margin:20px 0;
-animation:arrowMove 1.2s infinite;
-}
-
-@keyframes arrowMove{
-0%{transform:translateY(0);}
-50%{transform:translateY(8px);}
-100%{transform:translateY(0);}
-}
-
-/* ===== feature ===== */
-.feature{
-display:flex;
-gap:20px;
-margin-bottom:30px;
-align-items:flex-start;
-}
-
-.feature-number{
-background:var(--cyan100);
-color:#fff;
-font-weight:bold;
-font-size:24px;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-shrink:0;
-}
-
-.feature-text h3{
-margin:0 0 10px;
-}
-
-/* CTA */
-.big-cta{
-background:#FFA726;
-color:#fff;
-padding:20px 60px;
-font-size:20px;
-font-weight:bold;
-border-radius:8px;
-display:inline-block;
-text-decoration:none;
-margin-top:20px;
-box-shadow:0 8px 20px rgba(255,167,38,.3);
-}
-
-/* ===== footer ===== */
-footer{
-background:#fff;
-color:#555;
-padding:50px 20px;
-font-size:14px;
-border-top:1px solid #eee;
-}
-
-/* =========================
-   📱 スマホ最適化
-========================= */
-@media (max-width: 768px){
+/* ===== スマホ ===== */
+@media (max-width:768px){
 
   /* ロゴ中央 */
   .logo-box{
     right:50%;
     top:12px;
     transform:translateX(50%);
-    padding:8px 12px;
   }
 
   .logo-box img{
@@ -253,16 +140,21 @@ border-top:1px solid #eee;
     font-size:16px;
   }
 
-  .hero-center-logo img{
-    height:50px;
+  /* 表示切替 */
+  .pc-text{
+    display:none;
+  }
+
+  .sp-text{
+    display:inline;
   }
 
   /* 0円さらに強調 */
-  .zero-fee .big-zero{
-    font-size:40px;
+  .big-zero{
+    font-size:34px;
   }
 
-  /* 見出し1行固定 */
+  /* 見出し1行 */
   .title{
     white-space:nowrap;
     font-size:22px;
@@ -270,7 +162,6 @@ border-top:1px solid #eee;
 
 }
 </style>
-
 </head>
 
 <body>
@@ -289,10 +180,17 @@ border-top:1px solid #eee;
 
 <p>渡辺パイプ・セディアグループの施工店ネットワークで仕事の機会を創出</p>
 
+<!-- ★ここがポイント -->
 <div class="zero-fee">
-入会金・年会費・紹介手数料
-<span class="big-zero">すべて0円</span>
-<small>完全無料でご利用いただけます</small>
+
+<span class="pc-text">
+入会金・年会費・紹介手数料 <span class="big-zero">すべて0円</span>
+</span>
+
+<span class="sp-text">
+入会金・年会費・紹介手数料 <span class="big-zero">0円</span>
+</span>
+
 </div>
 
 </section>
@@ -310,10 +208,90 @@ border-top:1px solid #eee;
 <div class="arrow-down">↓</div>
 
 <div style="text-align:center;margin-top:10px;">
-<a href="#" class="big-cta">無料で問合せ</a>
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" 
+class="big-cta"
+onclick="gtag('event','contact_click',{'location':'middle'});">
+無料で問合せ
+</a>
 </div>
 
 </section>
+
+<section class="section section-gray">
+<h2 class="title">セディアコネクトの特徴</h2>
+
+<div class="feature">
+<div class="feature-number">01</div>
+<div class="feature-text">
+<h3>ご紹介には渡辺パイプの営業担当が仲介いたします</h3>
+通常のマッチングサイトとは異なり、責任をもって渡辺パイプの営業担当が仲介し、マッチングまでつなげます。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">02</div>
+<div class="feature-text">
+<h3>紹介率80％以上</h3>
+渡辺パイプの営業担当が責任をもって仲介しますので、紹介率は80％以上となっております。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">03</div>
+<div class="feature-text">
+<h3>万が一に備えた工事補償1000万円つき</h3>
+セディア・コネクト内でマッチングした工事に限り、対物事故1000万円まで補償されます。<br>
+※補償には事前の申請が必要となります。
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-number">04</div>
+<div class="feature-text">
+<h3>全国の現場で利用できる</h3>
+全国のセディアグループのネットワークから最適な施工店をご紹介します。
+
+<div style="margin-top:12px;font-size:13px;color:#666;line-height:1.6;">
+※ご利用にあたっては所定の審査がございます。<br>
+お取引状況等により、ご利用条件が異なる場合や、ご案内が難しい場合がございます。
+</div>
+
+</div>
+</div>
+
+</section>
+
+<section class="section-dark section">
+<h2>まずはお気軽にお問い合わせください</h2>
+<p>サービス詳細をご案内いたします</p>
+
+<a href="https://tayori.com/form/db2fe61b8a4609596ab7565050b131445c765f00/" 
+class="big-cta"
+onclick="gtag('event','contact_click',{'location':'bottom'});">
+今すぐ問い合わせる
+</a>
+
+</section>
+
+<footer>
+<div style="max-width:900px;margin:auto;line-height:1.8;">
+<strong>渡辺パイプ株式会社</strong><br>
+〒100-0004<br>
+東京都千代田区大手町1-3-2<br>
+経団連会館12階<br><br>
+
+TEL　03-4564-4294（平日9:00～17:30）<br>
+
+会社HP　
+<a href="https://www.sedia-system.co.jp/" target="_blank" style="color:#00AEEF;">
+https://www.sedia-system.co.jp/
+</a>
+</div>
+
+<div style="margin-top:20px;text-align:center;font-size:12px;">
+© watanabepipe
+</div>
+</footer>
 
 </body>
 </html>
