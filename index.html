@@ -1,4 +1,4 @@
-<html lang="ja">
+<html lang="ja"> 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,6 +102,11 @@ font-size:14px;
 font-weight:normal;
 opacity:.9;
 margin-top:4px;
+}
+
+/* ★常に改行 */
+.sp-break{
+display:block;
 }
 
 /* ===== section ===== */
@@ -231,15 +236,13 @@ border-top:1px solid #eee;
   }
 
   .logo-box img{
-    height:55px; /* 小さめに */
+    height:55px;
   }
 
-  /* ヒーロー余白調整 */
   .hero{
-    padding-top:140px; /* ロゴ分の余白確保 */
+    padding-top:140px;
   }
 
-  /* 見出し少し縮小 */
   .hero h1{
     font-size:26px;
   }
@@ -248,9 +251,14 @@ border-top:1px solid #eee;
     font-size:16px;
   }
 
-  /* 中央ロゴも少し小さく */
   .hero-center-logo img{
     height:50px;
+  }
+
+  /* 見出し1行固定 */
+  .title{
+    white-space:nowrap;
+    font-size:22px;
   }
 
 }
@@ -284,13 +292,11 @@ gtag('config', 'G-RTJS5DKSL9');
 <p>渡辺パイプ・セディアグループの施工店ネットワークで仕事の機会を創出</p>
 
 <div class="zero-fee">
-入会金・年会費・紹介手数料　すべて0円
+入会金・年会費・紹介手数料<span class="sp-break"></span>すべて0円
 <small>完全無料でご利用いただけます</small>
 </div>
 
 </section>
-
-<!-- 以下は元コードそのまま -->
 
 <section class="section">
 <h2 class="title">こんなお悩みありませんか？</h2>
